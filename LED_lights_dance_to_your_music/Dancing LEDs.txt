@@ -1,0 +1,69 @@
+Making the LED lights dance to your music
+
+
+Step 1: Making the LED lights dance to your music
+
+Objective here is to use the A/D converter on Arduino to read input sound and light up a set LEDs to
+reflect the level of the sounds volume. The LEDs are controlled from Digital pins 3, 4, 5,6. They are
+turned on based on what the level of input is from the Analog 0 pin, which is connected to the
+headphone jack.
+Parts:
+1x Arduino
+4x LEDs
+4x 390 ohm resistors
+1x 10k trimpot
+1x Headphone jack
+1x 10uF Capasitor
+
+
+Step 2: Interfacing the relay modules to the Arduino
+
+To connect the 4 Relay board to an Arduino is very easy and allows you to turn
+on and off an wide range of
+devices, both AC and DC. The first to connections are the ground and power
+pins, You need to connect the
+Arduino +5v to the 4 Relay board VCC pin and the Arduino ground to the 4
+Relay board GND pin. Then it’s
+a only a matter of just connecting the communication pins, labeled IN1, IN2, IN3
+and IN4, two 4 data pins
+on the Arduino.
+In the example code below I used Arduino pins 7, 8 , 9, 10. I avoid using Data
+pins 0 and 1 as they are used
+by the Arduino for serial communication and can cause problems when
+uploading code to the Arduino.
+The default state of the relay when the power is off for COMM (power) to be
+connected to NC (normally closed),
+this is the equivalent of setting the 4 Relay boards IN pin to HIGH (has +5v
+sent to it) It is a safety feature to not
+use the NC connector in-case you Arduino looses power it will automatically turns off all the devices connected
+to the relay.
+When you have something connected to the relays NO (Normally Open) connector and you set the
+corresponding IN pin to LOW (0v), power will flow in from the COMM connector and out of the NO connector
+
+
+Step 3: Weaving the relay modules with the dancing lights
+
+To connect the 4 Relay board to 
+an Arduino is very easy. 
+You only need to connect the 
+Arduino +5v to the 4 Relay board 
+VCC pin and an Arduino Ground to
+the 4 Relay board GND pin.
+Then it’s a matter of just
+connecting some data pins from
+the Arduino to the 4 Relay board
+IN pins.
+In the example code below I used
+Arduino pins 7, 8 , 9, 10.
+I didn’t use the same digital pins
+as the LEDs because they are inversed to each other.
+The LEDs get power from the Arduino, that means when the digital pin is HIGH (1) it has +5v on the
+line and the LED lights up.
+The relay commands are the opposite to this and the relay is switched with the IN pin is set LOW (0).
+The relays default state is to connect COM to NC (normally closed), this is also done by setting the
+relays IN pin HIGH.
+This is a safety feature in-case you Arduino looses power it turns off all the relay switches.
+To change the relays state so NO (Normally Open) the pin is set to LOW.
+I have some 12v DC lights that I want to activate like LEDs as a VU meter.
+To do that I connect the lights power line to the 4 Relay board relay Com connector and
+the line to the lights connects to the relays NO connector. The NC connect is left empty.
